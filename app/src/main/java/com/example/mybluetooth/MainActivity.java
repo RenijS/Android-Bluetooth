@@ -36,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
         listview = (ListView) findViewById(R.id.lView);
         BA = BluetoothAdapter.getDefaultAdapter();
     }
-
+//OnClickListener is not used because in xml we have used onClick in button
+//For on and off button
     public void off(View view) {
         BA.disable();
         Toast.makeText(getApplicationContext(),"Turned off", Toast.LENGTH_LONG).show();
@@ -52,12 +53,12 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Already Turned On", Toast.LENGTH_LONG).show();
         }
     }
-
+ //Makes self visible for bluetooth
     public void discoverable(View view){
         Intent discover = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
         startActivityForResult(discover, 0);
     }
-
+ //gets list of paired devices
     public void list(View view) {
         pairedDevices = BA.getBondedDevices();
         ArrayList list = new ArrayList();
